@@ -1,6 +1,7 @@
 # nvALT 2 (Tristan's fork)
 
 This is a fork of nvAlt 2 with additional quality of life fixes by Tristan Hume.
+Check out the [releases page](https://github.com/trishume/nv/releases) for a build signed with my dev key and with a Simperium API key installed.
 
 Fixed so far:
 - Tab now always shifts right, shift-tab shifts left
