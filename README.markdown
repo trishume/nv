@@ -1,4 +1,12 @@
-# nvALT 2
+# nvALT 2 (Tristan's fork)
+
+This is a fork of nvAlt 2 with additional quality of life fixes by Tristan Hume.
+
+Fixed so far:
+- Tab now always shifts right, shift-tab shifts left
+- Fix bug in shift right that caused it to shift by incorrect amounts when cursor wasn't at start of line.
+
+# Old Readme
 
 A collaboration between Brett Terpstra (ttscoff) and David Halter (ElasticThreads) based on [DivineDominion's](github.com/divineDominion/nv) fork. nvALT adds a few features we'd been looking for (and let me get some coding practice).
 
