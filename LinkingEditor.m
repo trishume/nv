@@ -947,8 +947,7 @@ copyRTFType:
             return;
         }
     }
-	if ([prefsController autoFormatsListBullets] && [self _selectionAbutsBulletIndentRange]) {
-		
+	if ([prefsController autoFormatsListBullets]) {
 		[self shiftLeftAction:nil];
 	} else {
 	
@@ -958,30 +957,8 @@ copyRTFType:
 
 - (void)insertTabIgnoringFieldEditor:(id)sender {
 	
-	NSRange range = [self selectedRange];
-	if ((range.length > 0 && [[self string] rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet] 
-														   options:NSLiteralSearch range:range].location != NSNotFound) ||
-		([prefsController autoFormatsListBullets] && [self _selectionAbutsBulletIndentRange])) {
-		//tab shifts text only if there is more than one line selected (i.e., the selection contains at least one line break), or an indented bullet is near
-		
-		[self shiftRightAction:nil];
-		
-	} else if ([prefsController softTabs]) {
-		
-		NSUInteger numberOfSpacesPerTab = [prefsController numberOfSpacesInTab];
-
-		NSUInteger locationOnLine = range.location - [[self string] lineRangeForRange:range].location;
-		if (numberOfSpacesPerTab != 0) {
-			NSUInteger numberOfSpacesLess = locationOnLine % numberOfSpacesPerTab;
-			numberOfSpacesPerTab = numberOfSpacesPerTab - numberOfSpacesLess;
-		}
-		NSMutableString *spacesString = [[NSMutableString alloc] initWithCapacity:numberOfSpacesPerTab];
-		while (numberOfSpacesPerTab--) {
-			[spacesString appendString:@" "];
-		}
-		
-		[self insertText:spacesString];
-		[spacesString release];
+	if ([prefsController softTabs]) {
+    [self shiftRightAction:nil];
 	} else {
 		[self insertText:@"\t"];
 	}

@@ -153,11 +153,13 @@
 		replacementString = [[NSMutableString alloc] init];
 		int numberOfSpacesPerTab = [[GlobalPrefs defaultPrefs] numberOfSpacesInTab];
 		
-		int locationOnLine = [textView selectedRange].location - [[textView string] lineRangeForRange:NSMakeRange([textView selectedRange].location, 0)].location;
-		if (numberOfSpacesPerTab != 0) {
-			int numberOfSpacesLess = locationOnLine % numberOfSpacesPerTab;
-			numberOfSpacesPerTab = numberOfSpacesPerTab - numberOfSpacesLess;
-		}
+    // TODO this should use the line's indent level, otherwise it doesn't work
+    // when not at beginning of line.
+//		int locationOnLine = [textView selectedRange].location - [[textView string] lineRangeForRange:NSMakeRange([textView selectedRange].location, 0)].location;
+//		if (numberOfSpacesPerTab != 0) {
+//			int numberOfSpacesLess = locationOnLine % numberOfSpacesPerTab;
+//			numberOfSpacesPerTab = numberOfSpacesPerTab - numberOfSpacesLess;
+//		}
 		
 		while (numberOfSpacesPerTab--) {
 			[replacementString appendString:@" "];
